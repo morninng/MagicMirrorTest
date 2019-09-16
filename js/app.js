@@ -58,19 +58,32 @@ var App = function() {
 		if (typeof(global.configuration_file) !== "undefined") {
 		    configFilename = path.resolve(global.configuration_file);
 		}
-
+    console.log('configFilename', configFilename);
 		try {
+
+
 			fs.accessSync(configFilename, fs.F_OK);
+      console.log('require');
 			var c = require(configFilename);
+      console.log('checkDeprecatedOptions');
 			checkDeprecatedOptions(c);
-			var config = Object.assign(defaults, c);
+      console.log('assign');
+      var config = Object.assign(defaults, c);
+      console.log('callback', callback);
 			callback(config);
 		} catch (e) {
+
+
+
+      console.log('loadconfig error', e);
 			if (e.code === "ENOENT") {
 				console.error(Utils.colors.error("WARNING! Could not find config file. Please create one. Starting with default configuration."));
 			} else if (e instanceof ReferenceError || e instanceof SyntaxError) {
 				console.error(Utils.colors.error("WARNING! Could not validate config file. Starting with default configuration. Please correct syntax errors at or above this line: " + e.stack));
 			} else {
+
+
+
 				console.error(Utils.colors.error("WARNING! Could not load config file. Starting with default configuration. Error found: " + e));
 			}
 			callback(defaults);
@@ -104,27 +117,39 @@ var App = function() {
 	 */
 	var loadModule = function(module, callback) {
 
-		var elements = module.split("/");
-		var moduleName = elements[elements.length - 1];
+
+    console.log('loadModule', module);
+    var elements = module.split("/");
+    console.log('elements', elements)
+    var moduleName = elements[elements.length - 1];
+    console.log('moduleName');
 		var moduleFolder =  __dirname + "/../modules/" + module;
 
 		if (defaultModules.indexOf(moduleName) !== -1) {
 			moduleFolder =  __dirname + "/../modules/default/" + module;
 		}
 
-		var helperPath = moduleFolder + "/node_helper.js";
+    var helperPath = moduleFolder + "/node_helper.js";
+    console.log('helperPath', helperPath);
 
 		var loadModule = true;
 		try {
+
+      console.log('accessSync', helperPath);
+
 			fs.accessSync(helperPath, fs.R_OK);
 		} catch (e) {
 			loadModule = false;
 			console.log("No helper found for module: " + moduleName + ".");
-		}
+    }
+    console.log('after accessSync');
 
 		if (loadModule) {
-			var Module = require(helperPath);
-			var m = new Module();
+      console.log(' require helperPath =', helperPath)
+      var Module = require(helperPath);
+      console.log('require done and before new');
+      var m = new Module();
+      console.log('new Module');
 
 			if (m.requiresVersion) {
 				console.log("Check MagicMirror version for node helper '" + moduleName + "' - Minimum version:  " + m.requiresVersion + " - Current version: " + global.version);
@@ -135,7 +160,7 @@ var App = function() {
 					return;
 				}
 			}
-
+      console.log('setName', m.setName);
 			m.setName(moduleName);
 			m.setPath(path.resolve(moduleFolder));
 			nodeHelpers.push(m);
@@ -152,9 +177,11 @@ var App = function() {
 	 * argument module string - The name of the module (including subpath).
 	 */
 	var loadModules = function(modules, callback) {
-		console.log("Loading module helpers ...");
+		console.log("Loading module helpers ...", modules);
+
 
 		var loadNextModule = function() {
+      console.log('loadNextModule!!');
 			if (modules.length > 0) {
 				var nextModule = modules[0];
 				loadModule(nextModule, function() {
@@ -200,6 +227,8 @@ var App = function() {
 	 *
 	 * argument callback function - The callback function.
 	 */
+
+
 	this.start = function(callback) {
 
 		loadConfig(function(c) {
@@ -212,11 +241,15 @@ var App = function() {
 				if (modules.indexOf(module.module) === -1 && !module.disabled) {
 					modules.push(module.module);
 				}
-			}
+      }
+      console.log('modules', modules);
+
 
 			loadModules(modules, function() {
+        console.log('loadModules');
 				var server = new Server(config, function(app, io) {
-					console.log("Server started ...");
+          console.log("Server started ...");
+          console.log('nodeHelpers', nodeHelpers);
 
 					for (var h in nodeHelpers) {
 						var nodeHelper = nodeHelpers[h];
@@ -228,12 +261,14 @@ var App = function() {
 					console.log("Sockets connected & modules started ...");
 
 					if (typeof callback === "function") {
+            console.log('callback in loadModules')
 						callback(config);
 					}
 				});
 			});
 		});
 	};
+
 
 	/* stop()
 	 * This methods stops the core app.

@@ -33,10 +33,32 @@ var config = {
 		// 	module: "updatenotification",
 		// 	position: "top_bar"
 		// },
+		// {
+		// 	module: "helloworld",
+		// 	position: "top_left"
+    // },
+    // {
+    //   module: "MMM-AssistantMk2",
+    //   position: "top_right",
+    //   config: {
+    //     useWelcomeMessage: "brief today"
+    //   }
+    // },
 		{
 			module: "helloworld",
 			position: "top_left"
 		},
+    {
+      module: "MMM-EasyPix",
+    position: "top_center",
+    config: {
+      picName: "18.jpg", // Enter the picture file name.
+      maxWidth: "75%",        // Size picture precisely. Retains aspect ratio.
+      sounds: ["1.mp3", "me2.mp3"],  // mp3 sound file names in quotes seperated by commas for Hello-Lucy
+      updateInterval: 30 * 60 * 1000,     // updates display
+            animationSpeed: 3000,
+      }
+    },
 		// {
 		// 	module: "calendar",
 		// 	header: "US Holidays",
@@ -48,11 +70,26 @@ var config = {
 		// 				url: "webcal://www.calendarlabs.com/ical-calendar/ics/76/US_Holidays.ics"					}
 		// 		]
 		// 	}
+    // },
+    
+    {
+      module: 'MMM-ELMPrayerTime',
+      position: 'top_left',	// This can be any of the regions. Best result is in the top_left/top_right.
+      config: {
+        apiVersion: '1.0', // please, leave unchanged. reserved for future use.
+        timeFormat: 24,
+        notDisplayed: ['midnight', 'sunset'],
+        useUpdateInterval: true,
+        updateInterval: 86400 * 1000, // How often do you want to fetch new praying time? (milliseconds)
+        animationSpeed: 2.5 * 1000, // Speed of the update animation. (milliseconds)
+        alertTimer: 15000
+      }
+    },
+
+		// {
+		// 	module: "compliments",
+		// 	position: "lower_third"
 		// },
-		{
-			module: "compliments",
-			position: "lower_third"
-		},
 		// {
 		// 	module: "currentweather",
 		// 	position: "top_right",
