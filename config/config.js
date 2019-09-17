@@ -46,17 +46,17 @@ var config = {
     // },
 		{
 			module: "helloworld",
-			position: "top_left"
+			position: "middle_center"
 		},
     {
       module: "MMM-EasyPix",
-    position: "top_center",
+    position: "top_left",
     config: {
       picName: "18.jpg", // Enter the picture file name.
-      maxWidth: "75%",        // Size picture precisely. Retains aspect ratio.
-      sounds: ["1.mp3", "me2.mp3"],  // mp3 sound file names in quotes seperated by commas for Hello-Lucy
-      updateInterval: 30 * 60 * 1000,     // updates display
-            animationSpeed: 3000,
+      maxWidth: "100px",        // Size picture precisely. Retains aspect ratio.
+      // sounds: ["1.mp3", "me2.mp3"],  // mp3 sound file names in quotes seperated by commas for Hello-Lucy
+      // updateInterval:  60 * 1000,     // updates display
+      // animationSpeed: 3000,
       }
     },
 		// {
@@ -72,19 +72,19 @@ var config = {
 		// 	}
     // },
     
-    {
-      module: 'MMM-ELMPrayerTime',
-      position: 'top_left',	// This can be any of the regions. Best result is in the top_left/top_right.
-      config: {
-        apiVersion: '1.0', // please, leave unchanged. reserved for future use.
-        timeFormat: 24,
-        notDisplayed: ['midnight', 'sunset'],
-        useUpdateInterval: true,
-        updateInterval: 86400 * 1000, // How often do you want to fetch new praying time? (milliseconds)
-        animationSpeed: 2.5 * 1000, // Speed of the update animation. (milliseconds)
-        alertTimer: 15000
-      }
-    },
+    // {
+    //   module: 'MMM-ELMPrayerTime',
+    //   position: 'bottom_bar',	// This can be any of the regions. Best result is in the top_left/top_right.
+    //   config: {
+    //     apiVersion: '1.0', // please, leave unchanged. reserved for future use.
+    //     timeFormat: 24,
+    //     notDisplayed: ['midnight', 'sunset'],
+    //     useUpdateInterval: true,
+    //     updateInterval: 86400 * 1000, // How often do you want to fetch new praying time? (milliseconds)
+    //     animationSpeed: 2.5 * 1000, // Speed of the update animation. (milliseconds)
+    //     alertTimer: 15000
+    //   }
+    // },
 
 		// {
 		// 	module: "compliments",

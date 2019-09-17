@@ -82,8 +82,6 @@ var App = function() {
 				console.error(Utils.colors.error("WARNING! Could not validate config file. Starting with default configuration. Please correct syntax errors at or above this line: " + e.stack));
 			} else {
 
-
-
 				console.error(Utils.colors.error("WARNING! Could not load config file. Starting with default configuration. Error found: " + e));
 			}
 			callback(defaults);
@@ -246,7 +244,7 @@ var App = function() {
 
 
 			loadModules(modules, function() {
-        console.log('loadModules');
+        console.log('----------- loadModules callback ---------------');
 				var server = new Server(config, function(app, io) {
           console.log("Server started ...");
           console.log('nodeHelpers', nodeHelpers);
