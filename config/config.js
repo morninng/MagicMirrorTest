@@ -37,13 +37,13 @@ var config = {
 		// 	module: "helloworld",
 		// 	position: "top_left"
     // },
-    // {
-    //   module: "MMM-AssistantMk2",
-    //   position: "top_right",
-    //   config: {
-    //     useWelcomeMessage: "brief today"
-    //   }
-    // },
+    {
+      module: "MMM-AssistantMk2",
+      position: "top_right",
+      config: {
+        useWelcomeMessage: "brief today"
+      }
+    },
 		{
 			module: "helloworld",
 			position: "middle_center"
