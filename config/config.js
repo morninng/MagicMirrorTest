@@ -87,10 +87,10 @@ var config = {
             sensitivity : "0.5",
           },
           {
-            hotwords    : "hello_mirror",
-            file        : "hello_mirror.pmdl", // Personal model of your voice "Hello mirror"
-            sensitivity : "0.5",
-          }
+            hotwords: "smart_mirror",
+            file: "smart_mirror.umdl",
+            sensitivity: "0.5",
+          },
         ],
         defaultCommand: {
           notificationExec: {
