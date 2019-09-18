@@ -96,6 +96,7 @@ var config = {
           afterRecordLimit:0,
           restart:false,
         },
+        recipes: ["reboot.js"],
       },
     },
 		{
