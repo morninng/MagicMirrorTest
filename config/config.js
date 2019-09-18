@@ -60,7 +60,7 @@ var config = {
         },
         record: { // Full values are in `FOR EXPERTS` section.
           recordProgram: "arecord",  // Defaults to "arecord" - also supports "rec" and "sox"
-          device: "plughw:0"       // recording device (e.g.: "plughw:1")
+          device: null       // recording device (e.g.: "plughw:1")
         },
         play: { // Full values are in `FOR EXPERTS` section.
           playProgram: "mpg321", // recommended.
@@ -78,7 +78,7 @@ var config = {
         chimeOnFinish:null,
         mic: {
           recordProgram : "arecord",  
-          device        : "plughw:0" ,
+          device        : null ,
         },
         models: [
           {
@@ -86,6 +86,11 @@ var config = {
             file        : "computer.umdl",
             sensitivity : "0.5",
           },
+          {
+            hotwords    : "hello_mirror",
+            file        : "hello_mirror.pmdl", // Personal model of your voice "Hello mirror"
+            sensitivity : "0.5",
+          }
         ],
         defaultCommand: {
           notificationExec: {
