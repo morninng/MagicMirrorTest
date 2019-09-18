@@ -60,12 +60,43 @@ var config = {
         },
         record: { // Full values are in `FOR EXPERTS` section.
           recordProgram: "arecord",  // Defaults to "arecord" - also supports "rec" and "sox"
-          device: null        // recording device (e.g.: "plughw:1")
+          device: "plughw:0,0"       // recording device (e.g.: "plughw:1")
         },
         play: { // Full values are in `FOR EXPERTS` section.
           playProgram: "mpg321", // recommended.
         },
+        notifications: {
+          ASSISTANT_ACTIVATED: "HOTWORD_PAUSE",
+          ASSISTANT_DEACTIVATED: "HOTWORD_RESUME",
+        },
       }
+    },
+    {
+      module: "MMM-Hotword",
+      config: {
+        chimeOnFinish:null,
+        mic: {
+          recordProgram : "arecord",  
+          device        : "plughw:0,0",
+        },
+        models: [
+          {
+            hotwords    : "smart_mirror",
+            file        : "smart_mirror.umdl",
+            sensitivity : "0.5",
+          },
+        ],
+        defaultCommand: {
+          notificationExec: {
+            notification: "ASSISTANT_ACTIVATE",
+            payload: (detected, afterRecord) => {
+              return {profile:"default"}
+            }
+          },
+          afterRecordLimit:0,
+          restart:false,
+        },
+      },
     },
 		{
 			module: "helloworld",
