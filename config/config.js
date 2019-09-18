@@ -41,7 +41,30 @@ var config = {
       module: "MMM-AssistantMk2",
       position: "top_right",
       config: {
-        useWelcomeMessage: "brief today"
+
+        // --- ESSENTIALS / modifying for your environment might be needed.
+        deviceLocation: {
+          coordinates: { // set the latitude and longitude of the device to get localized information like weather or time. (ref. mygeoposition.com)
+            latitude: 51.5033640, // -90.0 - +90.0
+            longitude: -0.1276250, // -180.0 - +180.0
+          },
+        },
+    
+        defaultProfile: "default", // If you have several profiles and want to set one of them as default profile, describe here.
+    
+        profiles: {
+          "default" : { // profile name.
+            profileFile: "default.json", // profile file name.
+            lang: "en-US"
+          },
+        },
+        record: { // Full values are in `FOR EXPERTS` section.
+          recordProgram: "arecord",  // Defaults to "arecord" - also supports "rec" and "sox"
+          device: null        // recording device (e.g.: "plughw:1")
+        },
+        play: { // Full values are in `FOR EXPERTS` section.
+          playProgram: "mpg321", // recommended.
+        },
       }
     },
 		{

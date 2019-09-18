@@ -133,7 +133,7 @@ var App = function() {
 		var loadModule = true;
 		try {
 
-      console.log('accessSync', helperPath);
+      console.log('accessSync helperPath', helperPath);
 
 			fs.accessSync(helperPath, fs.R_OK);
 		} catch (e) {
