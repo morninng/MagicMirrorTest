@@ -69,6 +69,7 @@ var config = {
           ASSISTANT_ACTIVATED: "HOTWORD_PAUSE",
           ASSISTANT_DEACTIVATED: "HOTWORD_RESUME",
         },
+        recipes: ["reboot.js"],
       }
     },
     {
@@ -96,7 +97,6 @@ var config = {
           afterRecordLimit:0,
           restart:false,
         },
-        recipes: ["reboot.js"],
       },
     },
 		{
