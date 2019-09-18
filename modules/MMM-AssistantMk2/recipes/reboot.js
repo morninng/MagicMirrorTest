@@ -1,7 +1,7 @@
 var recipe = {
   transcriptionHook: {
     "REBOOT": {
-      pattern: "reboot yourself",
+      pattern: "reboot", // change wording for test
       command: "REBOOT"
     },
   },
