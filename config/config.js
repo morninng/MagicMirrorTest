@@ -78,12 +78,12 @@ var config = {
         chimeOnFinish:null,
         mic: {
           recordProgram : "arecord",  
-          device        : null,
+          device        : "plughw:0",
         },
         models: [
           {
-            hotwords    : "smart_mirror",
-            file        : "smart_mirror.umdl",
+            hotwords    : "computer",
+            file        : "computer.umdl",
             sensitivity : "0.5",
           },
         ],
@@ -94,9 +94,11 @@ var config = {
               return {profile:"default"}
             }
           },
+
           afterRecordLimit:0,
           restart:false,
         },
+        useDisplay: true,
       },
     },
 		{
