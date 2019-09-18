@@ -78,7 +78,7 @@ var config = {
         chimeOnFinish:null,
         mic: {
           recordProgram : "arecord",  
-          device        : "plughw:0",
+          device        : null,
         },
         models: [
           {
