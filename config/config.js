@@ -70,42 +70,6 @@ var config = {
           ASSISTANT_DEACTIVATED: "HOTWORD_RESUME",
         },
         recipes: ["reboot.js"],
-
-
-
-        // https://github.com/eouia/MMM-AssistantMk2/wiki/gAction  added by here
-        action: {
-          "com.example.commands.REBOOT" : {
-            command: "REBOOT"
-          },
-          "com.example.commands.PAGE" : {
-            command: "PAGE"
-          },
-        },
-        command: {
-          "PAGE": {
-            notification:(params)=>{
-              if (params.number) {
-                return "PAGE_SELECT"
-              } else if (params.incordec == "INC") {
-                return "PAGE_INCREMENT"
-              } else {
-                return "PAGE_DECREMENT"
-              }
-            },
-            payload:()=>{
-              if (params.number) {
-                return params.number
-              } else {
-                return null
-              }
-            }
-          },
-        },
-
-
-
-
       }
     },
     {
